@@ -10,7 +10,10 @@ const productRoutes=require('./routes/productRoutes');
 
 const app=express();
 
-app.use(cors());
+app.use(cors({
+  origin: "http://localhost:3000", // ✅ only your frontend
+  credentials: true                // ✅ allow cookies or headers
+}));
 app.use(express.json());
 
 app.use('/api/users',userRoutes)
