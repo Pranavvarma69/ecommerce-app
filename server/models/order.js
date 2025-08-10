@@ -1,25 +1,25 @@
-const mongoose=require('mongoose')
+const mongoose = require('mongoose');
 
-const orderSchema=new mongoose.Schema({
-    user:{type:mongoose.Schema.Types.ObjectId,ref:'user'},
-    orderItems:[
+const orderSchema = new mongoose.Schema({
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: false },
+    orderItems: [
         {
-            product:{type:mongoose.Schema.Types.ObjectId,ref:'product'},
-            qty:number
+            product: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
+            qty: { type: Number, required: true }
         }
     ],
-    shippingaddress:{
-        address:String,
-        city:String,
-        postalCode:Number,
-        country:String
+    shippingAddress: {
+        address: { type: String, required: true },
+        city: { type: String, required: true },
+        postalCode: { type: Number, required: true },
+        country: { type: String, required: true }
     },
-    paymentmethod:String,
-    totalPrice:Number,
-    isPaid:{type:Boolean,default:false},
-    paidAt:Date,
-    isDelivered:{type:Boolean,default:false},
-    deliveredAt:Date
+    paymentMethod: { type: String, required: true },
+    totalPrice: { type: Number, required: false},
+    isPaid: { type: Boolean, default: false },
+    paidAt: Date,
+    isDelivered: { type: Boolean, default: false },
+    deliveredAt: Date
+}, { timestamps: true });
 
-},{timestamps:true});
-module.exports=mongoose.model('order',orderSchema);
+module.exports = mongoose.model('Order', orderSchema);

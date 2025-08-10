@@ -7,8 +7,8 @@ const CartPage = () => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.cart.items);
 
-  const handleQuantityChange = (_id, quantity) => {
-    dispatch(updateQuantity({ _id, quantity: Number(quantity) }));
+  const handleQuantityChange = (id, quantity) => {
+    dispatch(updateQuantity({ id, quantity: Number(quantity) }));
   };
 
   const handleRemove = (_id) => {

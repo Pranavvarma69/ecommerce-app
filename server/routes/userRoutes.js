@@ -28,7 +28,7 @@ router.post('/register', async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
-    console.log("🔵 /login route hit"); 
+    console.log("/login route hit"); 
     const { email, password } = req.body;
     console.log("Login Request Body:", req.body);
   
